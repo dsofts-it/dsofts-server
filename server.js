@@ -14,6 +14,7 @@ import clientProjectRoutes from './routes/clientProjectRoutes.js';
 import adminClientProjectRoutes from './routes/adminClientProjectRoutes.js';
 import serviceRoutes from './routes/serviceRoutes.js';
 import contactRoutes from './routes/contactRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -25,10 +26,12 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors({
-  origin: process.env.CLIENT_URL || '*',
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL || '*',
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -45,7 +48,7 @@ app.get('/', (req, res) => {
     message: '🚀 DSofts IT Services API',
     version: '1.0.0',
     status: 'running',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 });
 
@@ -57,6 +60,7 @@ app.use('/api/client-projects', clientProjectRoutes);
 app.use('/api/admin/client-projects', adminClientProjectRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/upload', uploadRoutes);
 
 // 404 handler
 app.use((req, res) => {

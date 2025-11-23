@@ -1,0 +1,1195 @@
+{
+    "info": {
+        "name": "DSofts IT Services API - Render Deployment",
+        "_postman_id": "dsofts-backend-api-render",
+        "description": "Complete API collection for DSofts IT Services backend deployed on Render\n\n## Base URL\nhttps://dsofts-server-bj3s.onrender.com\n\n## Authentication\nMost endpoints require a Bearer token. After signup/login, the token will be automatically saved to the `authToken` variable.\n\n## Test Credentials\n\n### Admin User\n- Email: admin@dsofts.com\n- Password: admin123\n\n### Regular User\n- Email: john@example.com\n- Password: password123\n\n## Testing Flow\n\n1. **Health Check** - Verify API is running\n2. **Signup/Login** - Get authentication token\n3. **Public APIs** - Test projects and services (no auth required)\n4. **User APIs** - Test client projects (requires auth)\n5. **Admin APIs** - Test admin operations (requires admin role)\n\n## Notes\n- All timestamps are in ISO 8601 format\n- IDs are automatically captured in variables for easy testing\n- Admin endpoints require admin role",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "{{authToken}}",
+                "type": "string"
+            }
+        ]
+    },
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "https://dsofts-server-bj3s.onrender.com",
+            "type": "string"
+        },
+        {
+            "key": "authToken",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "userId",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "projectId",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "clientProjectId",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "serviceId",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "contactId",
+            "value": "",
+            "type": "string"
+        }
+    ],
+    "item": [
+        {
+            "name": "🏥 Health Check",
+            "item": [
+                {
+                    "name": "API Health Check",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                ""
+                            ]
+                        },
+                        "description": "Check if the API is running and get basic information"
+                    },
+                    "response": []
+                }
+            ],
+            "description": "Health check endpoint to verify API status"
+        },
+        {
+            "name": "🔐 Authentication",
+            "item": [
+                {
+                    "name": "Signup - Regular User",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.response.code === 201) {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.collectionVariables.set('authToken', jsonData.token);",
+                                    "    pm.collectionVariables.set('userId', jsonData.user._id);",
+                                    "    console.log('✅ User signed up successfully');",
+                                    "    console.log('Token saved to authToken variable');",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/signup",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "signup"
+                            ]
+                        },
+                        "description": "Create a new user account (role: user)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Signup - Admin User",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.response.code === 201) {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.collectionVariables.set('authToken', jsonData.token);",
+                                    "    pm.collectionVariables.set('userId', jsonData.user._id);",
+                                    "    console.log('✅ Admin signed up successfully');",
+                                    "    console.log('Token saved to authToken variable');",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Admin User\",\n  \"email\": \"admin@dsofts.com\",\n  \"password\": \"admin123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/signup",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "signup"
+                            ]
+                        },
+                        "description": "Create admin account (email must contain @dsofts.com)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Login - Regular User",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.response.code === 200) {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.collectionVariables.set('authToken', jsonData.token);",
+                                    "    pm.collectionVariables.set('userId', jsonData.user._id);",
+                                    "    console.log('✅ User logged in successfully');",
+                                    "    console.log('Token saved to authToken variable');",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/login",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "login"
+                            ]
+                        },
+                        "description": "Login with regular user credentials"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Login - Admin User",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.response.code === 200) {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.collectionVariables.set('authToken', jsonData.token);",
+                                    "    pm.collectionVariables.set('userId', jsonData.user._id);",
+                                    "    console.log('✅ Admin logged in successfully');",
+                                    "    console.log('Token saved to authToken variable');",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"admin@dsofts.com\",\n  \"password\": \"admin123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/login",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "login"
+                            ]
+                        },
+                        "description": "Login with admin credentials"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Current User",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/me",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "me"
+                            ]
+                        },
+                        "description": "Get currently logged in user details (requires auth token)"
+                    },
+                    "response": []
+                }
+            ],
+            "description": "Authentication endpoints for signup, login, and user verification"
+        },
+        {
+            "name": "📁 Portfolio Projects (Public)",
+            "item": [
+                {
+                    "name": "Get All Projects",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/projects",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects"
+                            ]
+                        },
+                        "description": "Get all portfolio projects (public, no auth required)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Featured Projects",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/projects?featured=true",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects"
+                            ],
+                            "query": [
+                                {
+                                    "key": "featured",
+                                    "value": "true"
+                                }
+                            ]
+                        },
+                        "description": "Get only featured portfolio projects"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Projects with Limit",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/projects?limit=5",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects"
+                            ],
+                            "query": [
+                                {
+                                    "key": "limit",
+                                    "value": "5",
+                                    "description": "Limit number of results"
+                                }
+                            ]
+                        },
+                        "description": "Get limited number of portfolio projects"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Project by Slug",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/projects/ecommerce-platform",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                "ecommerce-platform"
+                            ]
+                        },
+                        "description": "Get a specific project by its slug"
+                    },
+                    "response": []
+                }
+            ],
+            "description": "Public portfolio project endpoints (no authentication required)"
+        },
+        {
+            "name": "🔧 Portfolio Projects (Admin)",
+            "item": [
+                {
+                    "name": "Create Portfolio Project",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.response.code === 201) {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.collectionVariables.set('projectId', jsonData._id);",
+                                    "    console.log('✅ Portfolio project created');",
+                                    "    console.log('Project ID saved to projectId variable');",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"title\": \"E-commerce Platform\",\n  \"slug\": \"ecommerce-platform\",\n  \"thumbnailImageUrl\": \"https://images.unsplash.com/photo-1557821552-17105176677c\",\n  \"bannerImageUrl\": \"https://images.unsplash.com/photo-1563013544-824ae1b704d3\",\n  \"shortDescription\": \"Modern e-commerce solution with payment integration\",\n  \"fullDescription\": \"A complete e-commerce platform built with React and Node.js, featuring product management, shopping cart, payment integration with Stripe, order tracking, and admin dashboard. The platform handles thousands of transactions daily with 99.9% uptime.\",\n  \"techStack\": [\"React\", \"Node.js\", \"MongoDB\", \"Stripe\", \"AWS\"],\n  \"clientName\": \"ABC Corporation\",\n  \"clientRating\": 4.8,\n  \"completedAt\": \"2025-01-15T00:00:00.000Z\",\n  \"isFeatured\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/admin/projects",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "admin",
+                                "projects"
+                            ]
+                        },
+                        "description": "Create a new portfolio project (admin only)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Portfolio Project",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"clientRating\": 5.0,\n  \"isFeatured\": true,\n  \"fullDescription\": \"Updated description with more details about the project achievements and technical implementation...\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/admin/projects/{{projectId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "admin",
+                                "projects",
+                                "{{projectId}}"
+                            ]
+                        },
+                        "description": "Update an existing portfolio project (admin only)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Portfolio Project",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/admin/projects/{{projectId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "admin",
+                                "projects",
+                                "{{projectId}}"
+                            ]
+                        },
+                        "description": "Delete a portfolio project (admin only)"
+                    },
+                    "response": []
+                }
+            ],
+            "description": "Admin endpoints for managing portfolio projects (requires admin role)"
+        },
+        {
+            "name": "👤 Client Projects (User)",
+            "item": [
+                {
+                    "name": "Create Client Project",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.response.code === 201) {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.collectionVariables.set('clientProjectId', jsonData._id);",
+                                    "    console.log('✅ Client project created');",
+                                    "    console.log('Client Project ID saved to clientProjectId variable');",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"projectTitle\": \"Custom CRM System\",\n  \"projectDescription\": \"I need a custom CRM system for managing customer relationships, tracking sales, and generating reports. Should support multiple users and have a mobile app.\",\n  \"estimatedBudget\": 5000,\n  \"referencePortfolioProjectId\": \"{{projectId}}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/client-projects",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "client-projects"
+                            ]
+                        },
+                        "description": "Create a new client project request (requires user authentication)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get My Client Projects",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/client-projects",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "client-projects"
+                            ]
+                        },
+                        "description": "Get all client projects for the logged-in user"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Client Project by ID",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/client-projects/{{clientProjectId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "client-projects",
+                                "{{clientProjectId}}"
+                            ]
+                        },
+                        "description": "Get a specific client project by ID (user can only access their own projects)"
+                    },
+                    "response": []
+                }
+            ],
+            "description": "User endpoints for managing their own client project requests"
+        },
+        {
+            "name": "🔧 Client Projects (Admin)",
+            "item": [
+                {
+                    "name": "Get All Client Projects",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/admin/client-projects",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "admin",
+                                "client-projects"
+                            ]
+                        },
+                        "description": "Get all client projects from all users (admin only)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Client Projects by Status - New",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/admin/client-projects?status=new",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "admin",
+                                "client-projects"
+                            ],
+                            "query": [
+                                {
+                                    "key": "status",
+                                    "value": "new",
+                                    "description": "Filter by status: new, in_progress, deployed, cancelled"
+                                }
+                            ]
+                        },
+                        "description": "Get client projects filtered by status (admin only)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Client Projects by Status - In Progress",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/admin/client-projects?status=in_progress",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "admin",
+                                "client-projects"
+                            ],
+                            "query": [
+                                {
+                                    "key": "status",
+                                    "value": "in_progress"
+                                }
+                            ]
+                        },
+                        "description": "Get in-progress client projects (admin only)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Client Project Detail",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/admin/client-projects/{{clientProjectId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "admin",
+                                "client-projects",
+                                "{{clientProjectId}}"
+                            ]
+                        },
+                        "description": "Get detailed information about a client project (admin only)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Client Project Status - In Progress",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"status\": \"in_progress\",\n  \"notesFromAdmin\": \"Started development. Expected completion in 2 weeks.\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/admin/client-projects/{{clientProjectId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "admin",
+                                "client-projects",
+                                "{{clientProjectId}}"
+                            ]
+                        },
+                        "description": "Update client project status to in_progress (admin only)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Mark Project as Deployed",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"status\": \"deployed\",\n  \"deploymentUrl\": \"https://client-crm.example.com\",\n  \"notesFromAdmin\": \"Project successfully deployed and handed over to client.\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/admin/client-projects/{{clientProjectId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "admin",
+                                "client-projects",
+                                "{{clientProjectId}}"
+                            ]
+                        },
+                        "description": "Mark client project as deployed with deployment URL (admin only)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Cancel Client Project",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"status\": \"cancelled\",\n  \"notesFromAdmin\": \"Project cancelled as per client request.\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/admin/client-projects/{{clientProjectId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "admin",
+                                "client-projects",
+                                "{{clientProjectId}}"
+                            ]
+                        },
+                        "description": "Cancel a client project (admin only)"
+                    },
+                    "response": []
+                }
+            ],
+            "description": "Admin endpoints for managing all client projects"
+        },
+        {
+            "name": "🛠️ Services",
+            "item": [
+                {
+                    "name": "Get All Services",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/services",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "services"
+                            ]
+                        },
+                        "description": "Get all services (public, no auth required)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Service (Admin)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.response.code === 201) {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.collectionVariables.set('serviceId', jsonData._id);",
+                                    "    console.log('✅ Service created');",
+                                    "    console.log('Service ID saved to serviceId variable');",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"title\": \"Full-Stack Web Development\",\n  \"description\": \"End-to-end web application development with modern technologies. We build scalable, secure, and performant web applications tailored to your business needs.\",\n  \"startingPrice\": 2500,\n  \"features\": [\n    \"Responsive UI/UX Design\",\n    \"RESTful API Development\",\n    \"Database Design & Integration\",\n    \"Authentication & Authorization\",\n    \"Cloud Deployment\",\n    \"3 Months Free Support\"\n  ],\n  \"isPopular\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/services",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "services"
+                            ]
+                        },
+                        "description": "Create a new service (admin only)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Service (Admin)",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"startingPrice\": 3000,\n  \"isPopular\": true,\n  \"features\": [\n    \"Responsive UI/UX Design\",\n    \"RESTful API Development\",\n    \"Database Design & Integration\",\n    \"Authentication & Authorization\",\n    \"Cloud Deployment\",\n    \"6 Months Free Support\",\n    \"Performance Optimization\"\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/services/{{serviceId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "services",
+                                "{{serviceId}}"
+                            ]
+                        },
+                        "description": "Update an existing service (admin only)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Service (Admin)",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/services/{{serviceId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "services",
+                                "{{serviceId}}"
+                            ]
+                        },
+                        "description": "Delete a service (admin only)"
+                    },
+                    "response": []
+                }
+            ],
+            "description": "Service management endpoints"
+        },
+        {
+            "name": "📧 Contact",
+            "item": [
+                {
+                    "name": "Submit Contact Message",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.response.code === 201) {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.collectionVariables.set('contactId', jsonData._id);",
+                                    "    console.log('✅ Contact message submitted');",
+                                    "    console.log('Contact ID saved to contactId variable');",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Jane Smith\",\n  \"email\": \"jane@example.com\",\n  \"message\": \"I'm interested in your web development services. Can we schedule a call to discuss my project?\",\n  \"budget\": 3000,\n  \"timeline\": \"2-3 months\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/contact",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "contact"
+                            ]
+                        },
+                        "description": "Submit a contact form message (public, no auth required)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get All Contact Messages (Admin)",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/contact",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "contact"
+                            ]
+                        },
+                        "description": "Get all contact messages (admin only)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Contact Message by ID (Admin)",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/contact/{{contactId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "contact",
+                                "{{contactId}}"
+                            ]
+                        },
+                        "description": "Get a specific contact message by ID (admin only)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Contact Message (Admin)",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{authToken}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/contact/{{contactId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "contact",
+                                "{{contactId}}"
+                            ]
+                        },
+                        "description": "Delete a contact message (admin only)"
+                    },
+                    "response": []
+                }
+            ],
+            "description": "Contact form endpoints"
+        }
+    ]
+}

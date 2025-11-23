@@ -4,11 +4,9 @@ import User from '../models/User.js';
 
 // Generate JWT Token
 const generateToken = (userId, role) => {
-  return jwt.sign(
-    { userId, role },
-    process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
-  );
+  return jwt.sign({ userId, role }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN || '7d',
+  });
 };
 
 // @desc    Register a new user
@@ -20,30 +18,40 @@ export const signup = async (req, res) => {
 
     // Validate required fields
     if (!name || !email || !password) {
-      return res.status(400).json({ message: 'Please provide name, email, and password' });
+      return res
+        .status(400)
+        .json({ message: 'Please provide name, email, and password' });
     }
 
     // Validate password length
     if (password.length < 6) {
-      return res.status(400).json({ message: 'Password must be at least 6 characters long' });
+      return res
+        .status(400)
+        .json({ message: 'Password must be at least 6 characters long' });
     }
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ message: 'User with this email already exists' });
+      return res
+        .status(400)
+        .json({ message: 'User with this email already exists' });
     }
 
     // Hash password
     const saltRounds = 10;
     const passwordHash = await bcrypt.hash(password, saltRounds);
 
+    // Determine role based on email domain
+    // If email contains @dsofts.com, assign admin role
+    const role = email.toLowerCase().includes('@dsofts.com') ? 'admin' : 'user';
+
     // Create new user
     const user = await User.create({
       name,
       email,
       passwordHash,
-      role: 'user' // Default role
+      role,
     });
 
     // Generate token
@@ -55,13 +63,15 @@ export const signup = async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role
+        role: user.role,
       },
-      token
+      token,
     });
   } catch (error) {
     console.error('Signup error:', error);
-    res.status(500).json({ message: error.message || 'Server error during signup' });
+    res
+      .status(500)
+      .json({ message: error.message || 'Server error during signup' });
   }
 };
 
@@ -74,7 +84,9 @@ export const login = async (req, res) => {
 
     // Validate required fields
     if (!email || !password) {
-      return res.status(400).json({ message: 'Please provide email and password' });
+      return res
+        .status(400)
+        .json({ message: 'Please provide email and password' });
     }
 
     // Find user by email
@@ -98,13 +110,15 @@ export const login = async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role
+        role: user.role,
       },
-      token
+      token,
     });
   } catch (error) {
     console.error('Login error:', error);
-    res.status(500).json({ message: error.message || 'Server error during login' });
+    res
+      .status(500)
+      .json({ message: error.message || 'Server error during login' });
   }
 };
 
@@ -125,7 +139,7 @@ export const getMe = async (req, res) => {
       name: user.name,
       email: user.email,
       role: user.role,
-      createdAt: user.createdAt
+      createdAt: user.createdAt,
     });
   } catch (error) {
     console.error('Get me error:', error);
