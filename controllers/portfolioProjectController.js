@@ -71,6 +71,7 @@ export const createProject = async (req, res) => {
       techStack,
       clientName,
       clientRating,
+      websiteUrl,
       completedAt,
       isFeatured
     } = req.body;
@@ -99,6 +100,7 @@ export const createProject = async (req, res) => {
       techStack,
       clientName,
       clientRating,
+      websiteUrl,
       completedAt,
       isFeatured: isFeatured || false
     });

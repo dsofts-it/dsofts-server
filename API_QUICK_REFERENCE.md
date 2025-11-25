@@ -57,6 +57,7 @@ Authorization: Bearer YOUR_TOKEN
   "fullDescription": "A complete e-commerce platform...",
   "techStack": ["React", "Node.js", "MongoDB"],
   "clientName": "ABC Corp",
+  "websiteUrl": "https://client-ecommerce.example.com",
   "clientRating": 4.8,
   "completedAt": "2025-01-15T00:00:00.000Z",
   "isFeatured": true
