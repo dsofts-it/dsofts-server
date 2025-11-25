@@ -17,8 +17,9 @@ const contactMessageSchema = new mongoose.Schema({
     required: [true, 'Message is required']
   },
   budget: {
-    type: Number,
-    min: 0
+    // Store the selected budget label (front-end sends strings like "Less than $5,000")
+    type: String,
+    trim: true
   },
   timeline: {
     type: String,

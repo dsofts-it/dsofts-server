@@ -18,3 +18,21 @@ services:
         value: 7d
       - key: CLIENT_URL
         sync: false
+
+  # Frontend Static Site
+  - type: web
+    name: dsofts-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: no-cache
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
