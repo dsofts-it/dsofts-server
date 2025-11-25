@@ -316,7 +316,7 @@ Images are automatically optimized with:
 ### Error: "Access denied. Admin only"
 
 - **Cause:** Not logged in as admin
-- **Solution:** Login with admin credentials (email must contain @dsofts.com)
+- **Solution:** Login with admin credentials (email must contain @dsofts.com or @dsofts.in)
 
 ### Error: "Failed to upload image"
 

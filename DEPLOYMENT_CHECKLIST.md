@@ -163,7 +163,7 @@ https://dsofts-server.onrender.com
 
 This creates:
 
-- Admin user: admin@dsofts.com / admin123
+- Admin user: rohan@dsofts.in / Rohan123
 - Regular user: john@example.com / password123
 - 5 portfolio projects
 - 6 services

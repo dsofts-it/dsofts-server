@@ -11,8 +11,8 @@ https://dsofts-server-bj3s.onrender.com
 ### Admin
 
 ```
-Email: admin@dsofts.com
-Password: admin123
+Email: rohan@dsofts.in
+Password: Rohan123
 ```
 
 ### User
@@ -35,8 +35,8 @@ GET /
 ```
 POST /api/auth/login
 {
-  "email": "admin@dsofts.com",
-  "password": "admin123"
+  "email": "rohan@dsofts.in",
+  "password": "Rohan123"
 }
 ```
 
@@ -188,7 +188,7 @@ Authorization: Bearer YOUR_TOKEN_HERE
 ## ⚡ Quick Tips
 
 1. First request may take 30-60s (Render cold start)
-2. Admin email must contain `@dsofts.com`
+2. Admin email must contain `@dsofts.com` or `@dsofts.in`
 3. Tokens expire after 30 days
 4. All dates in ISO 8601 format
 5. IDs are MongoDB ObjectIds (24 hex characters)

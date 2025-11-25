@@ -21,8 +21,8 @@ https://dsofts-server-bj3s.onrender.com
 
 ### Admin User
 
-- **Email**: `admin@dsofts.com`
-- **Password**: `admin123`
+- **Email**: `rohan@dsofts.in`
+- **Password**: `Rohan123`
 - **Role**: Admin (can access all endpoints)
 
 ### Regular User
@@ -244,7 +244,7 @@ These variables are used in subsequent requests automatically (e.g., `{{projectI
 
 ### Issue: "Access denied. Admin only"
 
-**Solution**: You need to login with an admin account (email must contain `@dsofts.com`).
+**Solution**: You need to login with an admin account (email must contain `@dsofts.com` or `@dsofts.in`).
 
 ### Issue: "User already exists"
 

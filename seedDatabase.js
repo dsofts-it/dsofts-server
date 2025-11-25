@@ -11,9 +11,9 @@ dotenv.config();
 // Sample data
 const users = [
   {
-    name: 'Admin User',
-    email: 'admin@dsofts.com',
-    password: 'admin123',
+    name: 'Rohan Dede',
+    email: 'rohan@dsofts.in',
+    password: 'Rohan123',
     role: 'admin'
   },
   {
@@ -247,8 +247,8 @@ const seedDatabase = async () => {
     console.log(`   - Services: ${createdServices.length}`);
     console.log('\n👤 Login Credentials:');
     console.log('   Admin:');
-    console.log('     Email: admin@dsofts.com');
-    console.log('     Password: admin123');
+    console.log('     Email: rohan@dsofts.in');
+    console.log('     Password: Rohan123');
     console.log('   User:');
     console.log('     Email: john@example.com');
     console.log('     Password: password123');

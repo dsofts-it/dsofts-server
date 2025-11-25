@@ -228,7 +228,7 @@ npm run seed
 
 Creates:
 
-- Admin: admin@dsofts.com / admin123
+- Admin: rohan@dsofts.in / Rohan123
 - User: john@example.com / password123
 - 5 portfolio projects
 - 6 services

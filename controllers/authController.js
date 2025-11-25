@@ -43,8 +43,9 @@ export const signup = async (req, res) => {
     const passwordHash = await bcrypt.hash(password, saltRounds);
 
     // Determine role based on email domain
-    // If email contains @dsofts.com, assign admin role
-    const role = email.toLowerCase().includes('@dsofts.com') ? 'admin' : 'user';
+    // If email ends with @dsofts.com or @dsofts.in, assign admin role
+    const isAdminEmail = /@dsofts\.(com|in)$/i.test(email);
+    const role = isAdminEmail ? 'admin' : 'user';
 
     // Create new user
     const user = await User.create({
@@ -93,6 +94,13 @@ export const login = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: 'Invalid email or password' });
+    }
+
+    // Ensure admin domain users stay admin even if the record was created before the domain rule changed
+    const isAdminEmail = /@dsofts\.(com|in)$/i.test(email);
+    if (isAdminEmail && user.role !== 'admin') {
+      user.role = 'admin';
+      await user.save();
     }
 
     // Compare password

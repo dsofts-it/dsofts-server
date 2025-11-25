@@ -105,7 +105,7 @@ This creates:
 - 6 services
 
 **Login Credentials:**
-- Admin: admin@dsofts.com / admin123
+- Admin: rohan@dsofts.in / Rohan123
 - User: john@example.com / password123
 
 ## 🧪 Test the API

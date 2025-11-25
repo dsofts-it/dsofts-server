@@ -115,7 +115,7 @@ After deployment, you can seed the database:
 1. First, signup via API
 2. Then in Render Shell:
    ```bash
-   node makeAdmin.js admin@dsofts.com
+   node makeAdmin.js rohan@dsofts.in
    ```
 
 ## Monitoring

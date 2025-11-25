@@ -59,13 +59,13 @@ curl http://localhost:5000
 ```bash
 # First, signup a user via API
 # Then run:
-node makeAdmin.js admin@dsofts.com
+node makeAdmin.js rohan@dsofts.in
 ```
 
 ### Method 2: MongoDB Compass
 ```javascript
 db.users.updateOne(
-  { email: "admin@dsofts.com" },
+  { email: "rohan@dsofts.in" },
   { $set: { role: "admin" } }
 )
 ```

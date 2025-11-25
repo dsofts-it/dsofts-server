@@ -108,14 +108,14 @@ Create a regular user account:
 2. Use the `makeAdmin.js` script:
 
 ```bash
-node makeAdmin.js admin@dsofts.com
+node makeAdmin.js rohan@dsofts.in
 ```
 
 **Option B: Manually Update in MongoDB**
 
 ```javascript
 db.users.updateOne(
-  { email: "admin@dsofts.com" },
+  { email: "rohan@dsofts.in" },
   { $set: { role: "admin" } }
 )
 ```
