@@ -15,6 +15,12 @@ import adminClientProjectRoutes from './routes/adminClientProjectRoutes.js';
 import serviceRoutes from './routes/serviceRoutes.js';
 import contactRoutes from './routes/contactRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
+import jobRoutes from './routes/jobRoutes.js';
+import jobApplicationRoutes from './routes/jobApplicationRoutes.js';
+import caseStudyRoutes from './routes/caseStudyRoutes.js';
+import blogRoutes from './routes/blogRoutes.js';
+import testimonialRoutes from './routes/testimonialRoutes.js';
+import companySettingRoutes from './routes/companySettingRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -61,6 +67,12 @@ app.use('/api/admin/client-projects', adminClientProjectRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/jobs', jobRoutes);
+app.use('/api/job-applications', jobApplicationRoutes);
+app.use('/api/case-studies', caseStudyRoutes);
+app.use('/api/blog', blogRoutes);
+app.use('/api/testimonials', testimonialRoutes);
+app.use('/api/company-settings', companySettingRoutes);
 
 // 404 handler
 app.use((req, res) => {
