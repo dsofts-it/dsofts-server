@@ -16,7 +16,7 @@ const users = [
   {
     name: 'Rohan Dede',
     email: 'rohan@dsofts.in',
-    password: 'Rohan123',
+    password: 'Rohan@123',
     role: 'admin'
   },
   {
@@ -71,65 +71,106 @@ const portfolioProjects = [
 
 const services = [
   {
-    title: 'Web Development',
-    description: 'Custom, high-performance web applications engineered with modern technologies like React, Node.js, and Cloud services for optimal speed and scalability.',
+    title: 'Custom Web & Software Development',
+    description: 'Tailored, high-performance web applications engineered with modern technologies (React, Node.js, Next.js) tailored for all business fields.',
     startingPrice: 2500,
     features: [
       'Responsive & Mobile-First UI/UX',
-      'REST API & GraphQL Integration',
-      'Database Architecture & Optimization',
-      'Secure Auth & Role-Based Access',
-      'Cloud Deployment (AWS/Azure/GCP)',
-      'SEO & Performance Tuning'
+      'RESTful & GraphQL API Integration',
+      'Custom Database Schemas & Optimization',
+      'Secure Auth & Role-Based Access Control',
+      'Cloud Deployment (AWS/Azure/Render)',
+      'High Performance & SEO Optimization'
     ],
     isPopular: true
   },
   {
-    title: 'Mobile App Development',
-    description: 'Cross-platform native-feel iOS and Android mobile apps using Flutter and React Native to deliver fluid user experiences and reliable offline-first architecture.',
+    title: 'Mobile App Development (iOS & Android)',
+    description: 'Cross-platform native-feel mobile applications for iOS and Android using Flutter and React Native, tailored for Healthcare, Education, MLM, Finance, and Enterprise.',
     startingPrice: 3500,
     features: [
       'iOS & Android Cross-Platform Apps',
-      'Flutter & Dart Architecture',
-      'Push Notifications & Telemetry',
-      'In-App Payments & Subscriptions',
-      'App Store & Play Store Publishing'
+      'Flutter & React Native Architecture',
+      'Real-time Push Notifications & Biometrics',
+      'In-App Payment Gateway Integrations',
+      'App Store & Google Play Store Publishing'
     ],
     isPopular: true
   },
   {
-    title: 'Full Stack Development',
-    description: 'Complete end-to-end product development covering frontend UI design, robust backend REST APIs, scalable database schemas, and microservice integration.',
-    startingPrice: 4000,
+    title: 'Healthcare & Telemedicine Systems',
+    description: 'HIPAA-compliant healthcare platforms, electronic health records (EHR), patient portals, appointment scheduling, and telemedicine video consultation apps.',
+    startingPrice: 4500,
     features: [
-      'Frontend Architecture (React, Next.js)',
-      'Backend Microservices (Node.js, Express, Java)',
-      'Database Engineering (MongoDB, PostgreSQL, MySQL)',
-      'CI/CD Pipeline Setup & DevOps'
+      'Patient Registration & EHR Records',
+      'Doctor Appointment & Video Consultations',
+      'Lab & Prescription Management',
+      'HIPAA & Health Data Privacy Standards',
+      'Billing & Medical Insurance Integration'
     ],
     isPopular: true
   },
   {
-    title: 'Custom Software & CRM',
-    description: 'Tailored enterprise software, custom dashboards, inventory tracking, and CRM systems built specifically around your core business operations.',
+    title: 'EdTech & Education Management Systems',
+    description: 'Comprehensive Learning Management Systems (LMS), school management platforms, student portals, online examination systems, and interactive educational apps.',
     startingPrice: 3000,
     features: [
-      'Automated Workflow Pipelines',
-      'Real-time Analytics Dashboards',
-      'Role-based Enterprise Access',
-      'Legacy System API Bridges'
+      'Student & Teacher Management Portals',
+      'Live Online Classes & Video Streaming',
+      'Course Catalog & Online Assessments',
+      'Fee Collection & Attendance Telemetry',
+      'Parent Communication Mobile Apps'
     ],
     isPopular: false
   },
   {
-    title: 'AI-Powered Solutions',
-    description: 'Integrating intelligent AI agents, machine learning automation, and natural language query tools directly into your web and mobile platforms.',
-    startingPrice: 4500,
+    title: 'MLM Systems & Network Marketing Software',
+    description: 'Custom Multi-Level Marketing (MLM) software supporting Binary, Matrix, Generation, and Unilevel plans with automated payout calculators and genealogy trees.',
+    startingPrice: 3800,
     features: [
-      'Custom AI Workflow Integration',
-      'LLM API Integration & Fine-tuning',
-      'Automated Customer Service Agents',
-      'Predictive Analytics Dashboards'
+      'Binary, Matrix, Unilevel & Custom MLM Plans',
+      'Real-time Interactive Genealogy Trees',
+      'Automated Payout & Commission Engine',
+      'E-Wallet & Crypto/UPI Payment Gateway',
+      'Member Backoffice & Admin Control Panel'
+    ],
+    isPopular: true
+  },
+  {
+    title: 'FinTech & Finance Management Solutions',
+    description: 'Secure financial software, payment gateway aggregators, micro-finance tracking, accounting dashboards, and banking mobile applications.',
+    startingPrice: 4200,
+    features: [
+      'Multi-Currency Payment Gateways',
+      'Biometric Security & Encryption',
+      'Automated Ledger & Invoicing Systems',
+      'Loan Management & Interest Calculators',
+      'Real-time Financial Telemetry Dashboards'
+    ],
+    isPopular: true
+  },
+  {
+    title: 'Enterprise CRM & ERP Systems',
+    description: 'Fully customized CRM and ERP systems designed around your unique business workflows, lead tracking, inventory management, and automated sales pipelines.',
+    startingPrice: 3200,
+    features: [
+      'Sales Pipeline & Lead Tracking',
+      'Automated Business Workflow Engines',
+      'Inventory & Supply Chain Telemetry',
+      'Granular Role-based Employee Access',
+      'Custom Analytics & Exportable Reports'
+    ],
+    isPopular: false
+  },
+  {
+    title: 'AI & Smart Automation Solutions',
+    description: 'Custom AI integration, intelligent chatbots, predictive analytics, process automation, and machine learning models for growing businesses.',
+    startingPrice: 4000,
+    features: [
+      'AI Customer Support Chatbots',
+      'Automated Document Processing',
+      'Predictive Business Analytics',
+      'Custom LLM & API Integrations'
     ],
     isPopular: false
   }

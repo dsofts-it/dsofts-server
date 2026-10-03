@@ -16,14 +16,29 @@ const contactMessageSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Message is required']
   },
+  phone: {
+    type: String,
+    trim: true
+  },
+  company: {
+    type: String,
+    trim: true
+  },
+  service: {
+    type: String,
+    trim: true
+  },
   budget: {
-    // Store the selected budget label (front-end sends strings like "Less than $5,000")
     type: String,
     trim: true
   },
   timeline: {
     type: String,
     trim: true
+  },
+  targetEmail: {
+    type: String,
+    default: 'dsofts.itservices@gmail.com'
   },
   createdAt: {
     type: Date,

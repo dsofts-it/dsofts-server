@@ -5,22 +5,28 @@ import ContactMessage from '../models/ContactMessage.js';
 // @access  Public
 export const createContactMessage = async (req, res) => {
   try {
-    const { name, email, message, budget, timeline } = req.body;
+    const { name, email, phone, company, service, budget, timeline, message } = req.body;
 
     // Validate required fields
     if (!name || !email || !message) {
       return res.status(400).json({ 
-        message: 'Please provide name, email, and message' 
+        message: 'Please provide name, email, and project message' 
       });
     }
 
     const contactMessage = await ContactMessage.create({
       name,
       email,
-      message,
+      phone,
+      company,
+      service,
       budget,
-      timeline
+      timeline,
+      message,
+      targetEmail: 'dsofts.itservices@gmail.com'
     });
+
+    console.log(`📩 New Project Inquiry Received for dsofts.itservices@gmail.com from ${name} (${email})`);
 
     res.status(201).json({
       message: 'Contact message sent successfully',
