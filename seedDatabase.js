@@ -29,43 +29,82 @@ const users = [
 
 const portfolioProjects = [
   {
-    title: 'E-commerce Platform',
-    slug: 'ecommerce-platform',
-    thumbnailImageUrl: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&auto=format&fit=crop&q=80',
-    bannerImageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&auto=format&fit=crop&q=80',
-    shortDescription: 'Modern e-commerce solution with payment integration and admin dashboard',
-    fullDescription: 'A comprehensive e-commerce platform built with React and Node.js, featuring product management, shopping cart, payment integration, order tracking, and an admin dashboard.',
-    techStack: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS', 'AWS'],
-    clientName: 'Global Retail Solutions',
-    clientRating: 4.9,
-    completedAt: new Date('2025-01-15'),
-    isFeatured: true
-  },
-  {
-    title: 'Mobile Banking App',
-    slug: 'mobile-banking-app',
-    thumbnailImageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=80',
-    bannerImageUrl: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=1200&auto=format&fit=crop&q=80',
-    shortDescription: 'Secure mobile banking application with biometric authentication',
-    fullDescription: 'A state-of-the-art mobile banking solution featuring biometric authentication, real-time transaction processing, bill payments, fund transfers, and security controls.',
-    techStack: ['Flutter', 'Node.js', 'PostgreSQL', 'Firebase'],
-    clientName: 'FinTech Innovations',
-    clientRating: 4.9,
-    completedAt: new Date('2024-12-01'),
-    isFeatured: true
-  },
-  {
-    title: 'Healthcare Management System',
-    slug: 'healthcare-management-system',
+    title: 'Dhondge Hospital Platform',
+    slug: 'dhondge-hospital',
     thumbnailImageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80',
     bannerImageUrl: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&auto=format&fit=crop&q=80',
-    shortDescription: 'Complete hospital management system with patient records and scheduling',
-    fullDescription: 'An integrated healthcare management system that streamlines patient registration, appointment scheduling, electronic health records (EHR), and billing.',
-    techStack: ['React', 'Express', 'MongoDB', 'Docker'],
-    clientName: 'City Care Health',
-    clientRating: 4.8,
-    completedAt: new Date('2024-11-20'),
+    shortDescription: 'A clean, responsive hospital website designed to simplify patient access, showcase medical services, and improve digital presence.',
+    fullDescription: 'Complete hospital management and patient consultation suite. Features doctor availability schedules, appointment booking, medical department showcase, emergency contact telemetry, and patient inquiry management.',
+    techStack: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS', 'AWS'],
+    clientName: 'Dr. Meena Dhondge',
+    clientRating: 5,
+    completedAt: new Date('2025-02-10'),
     isFeatured: true
+  },
+  {
+    title: 'Aniket Hospital Care Management',
+    slug: 'aniket-hospital',
+    thumbnailImageUrl: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&auto=format&fit=crop&q=80',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&auto=format&fit=crop&q=80',
+    shortDescription: 'A modern and user-friendly hospital website designed to streamline patient interactions, appointment booking, and service accessibility.',
+    fullDescription: 'Comprehensive healthcare portal offering seamless online OPD registration, electronic health record lookups, emergency ward tracking, and interactive doctor schedules.',
+    techStack: ['React', 'Express.js', 'PostgreSQL', 'Tailwind CSS'],
+    clientName: 'Shubham Bande',
+    clientRating: 5,
+    completedAt: new Date('2025-01-20'),
+    isFeatured: true
+  },
+  {
+    title: 'Soar Task – Finance Dashboard UI',
+    slug: 'soar-task-finance-dashboard-ui',
+    thumbnailImageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&q=80',
+    shortDescription: 'A modern, responsive finance dashboard UI built to visualize account balances, transactions, and spending insights.',
+    fullDescription: 'Real-time financial telemetry dashboard with interactive charts, multi-currency wallet management, transaction categorization, exportable CSV/PDF statements, and encrypted card management.',
+    techStack: ['React', 'TypeScript', 'Recharts', 'Tailwind CSS', 'Node.js'],
+    clientName: 'Soar Company',
+    clientRating: 4.9,
+    completedAt: new Date('2024-12-15'),
+    isFeatured: true
+  },
+  {
+    title: 'PassMan – Encrypted Password Manager',
+    slug: 'passman',
+    thumbnailImageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=80',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=1200&auto=format&fit=crop&q=80',
+    shortDescription: 'A secure password manager web app built to store, manage, and access credentials easily with advanced local encryption.',
+    fullDescription: 'Zero-knowledge client-side AES-256 encrypted password management suite with automatic password strength audit, secure generator, and biometric unlock compatibility.',
+    techStack: ['React', 'Web Crypto API', 'Node.js', 'MongoDB'],
+    clientName: 'Harry Tech',
+    clientRating: 4.8,
+    completedAt: new Date('2024-11-28'),
+    isFeatured: true
+  },
+  {
+    title: 'MLM Network Referral Engine',
+    slug: 'mlm-referral-engine',
+    thumbnailImageUrl: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop&q=80',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&auto=format&fit=crop&q=80',
+    shortDescription: 'Multi-level marketing backoffice platform with interactive genealogy tree and real-time payout telemetry.',
+    fullDescription: 'Custom binary and matrix MLM platform featuring automated commission calculations, e-wallet payout processing, member downline tracking, and real-time genealogy visualization.',
+    techStack: ['React', 'Node.js', 'MongoDB', 'D3.js', 'Tailwind CSS'],
+    clientName: 'Global Referral Corp',
+    clientRating: 5,
+    completedAt: new Date('2025-02-01'),
+    isFeatured: true
+  },
+  {
+    title: 'EdTech Online Examination Portal',
+    slug: 'edtech-online-examination-portal',
+    thumbnailImageUrl: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&auto=format&fit=crop&q=80',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&auto=format&fit=crop&q=80',
+    shortDescription: 'Interactive online testing and learning management system for schools and institutes.',
+    fullDescription: 'Scalable examination portal with live proctoring telemetry, automatic grading, student performance analytics, course material distribution, and parent report cards.',
+    techStack: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Socket.io'],
+    clientName: 'EduVedic Institute',
+    clientRating: 5,
+    completedAt: new Date('2025-01-05'),
+    isFeatured: false
   }
 ];
 
@@ -73,7 +112,7 @@ const services = [
   {
     title: 'Custom Web & Software Development',
     description: 'Tailored, high-performance web applications engineered with modern technologies (React, Node.js, Next.js) tailored for all business fields.',
-    startingPrice: 2500,
+    startingPrice: 25000,
     features: [
       'Responsive & Mobile-First UI/UX',
       'RESTful & GraphQL API Integration',
@@ -87,7 +126,7 @@ const services = [
   {
     title: 'Mobile App Development (iOS & Android)',
     description: 'Cross-platform native-feel mobile applications for iOS and Android using Flutter and React Native, tailored for Healthcare, Education, MLM, Finance, and Enterprise.',
-    startingPrice: 3500,
+    startingPrice: 35000,
     features: [
       'iOS & Android Cross-Platform Apps',
       'Flutter & React Native Architecture',
@@ -100,7 +139,7 @@ const services = [
   {
     title: 'Healthcare & Telemedicine Systems',
     description: 'HIPAA-compliant healthcare platforms, electronic health records (EHR), patient portals, appointment scheduling, and telemedicine video consultation apps.',
-    startingPrice: 4500,
+    startingPrice: 45000,
     features: [
       'Patient Registration & EHR Records',
       'Doctor Appointment & Video Consultations',
@@ -113,7 +152,7 @@ const services = [
   {
     title: 'EdTech & Education Management Systems',
     description: 'Comprehensive Learning Management Systems (LMS), school management platforms, student portals, online examination systems, and interactive educational apps.',
-    startingPrice: 3000,
+    startingPrice: 30000,
     features: [
       'Student & Teacher Management Portals',
       'Live Online Classes & Video Streaming',
@@ -126,7 +165,7 @@ const services = [
   {
     title: 'MLM Systems & Network Marketing Software',
     description: 'Custom Multi-Level Marketing (MLM) software supporting Binary, Matrix, Generation, and Unilevel plans with automated payout calculators and genealogy trees.',
-    startingPrice: 3800,
+    startingPrice: 38000,
     features: [
       'Binary, Matrix, Unilevel & Custom MLM Plans',
       'Real-time Interactive Genealogy Trees',
@@ -139,7 +178,7 @@ const services = [
   {
     title: 'FinTech & Finance Management Solutions',
     description: 'Secure financial software, payment gateway aggregators, micro-finance tracking, accounting dashboards, and banking mobile applications.',
-    startingPrice: 4200,
+    startingPrice: 42000,
     features: [
       'Multi-Currency Payment Gateways',
       'Biometric Security & Encryption',
@@ -152,7 +191,7 @@ const services = [
   {
     title: 'Enterprise CRM & ERP Systems',
     description: 'Fully customized CRM and ERP systems designed around your unique business workflows, lead tracking, inventory management, and automated sales pipelines.',
-    startingPrice: 3200,
+    startingPrice: 32000,
     features: [
       'Sales Pipeline & Lead Tracking',
       'Automated Business Workflow Engines',
@@ -165,7 +204,7 @@ const services = [
   {
     title: 'AI & Smart Automation Solutions',
     description: 'Custom AI integration, intelligent chatbots, predictive analytics, process automation, and machine learning models for growing businesses.',
-    startingPrice: 4000,
+    startingPrice: 40000,
     features: [
       'AI Customer Support Chatbots',
       'Automated Document Processing',
@@ -247,10 +286,62 @@ const jobs = [
     skills: ['Flutter', 'Dart', 'Firebase', 'REST API', 'App Store Publishing'],
     benefits: ['Remote workspace allowance', 'Annual team retreats', 'Flexible vacation policy'],
     status: 'Published'
+  },
+  {
+    title: 'Fresher Flutter Developer Intern',
+    slug: 'fresher-flutter-developer-intern',
+    department: 'Engineering',
+    location: 'Remote / Pune, India',
+    workType: 'Full-time',
+    experience: 'Fresher / 0-1 Year',
+    salary: 'Stipend + Pre-Placement Offer (PPO)',
+    description: 'Kickstart your career as a Flutter Developer Intern working on live mobile app development projects.',
+    responsibilities: [
+      'Assist senior mobile developers in building UI screens using Flutter & Dart',
+      'Implement API integrations and resolve bug tickets',
+      'Learn best mobile architecture practices'
+    ],
+    requirements: [
+      'Basic understanding of Flutter and Dart programming',
+      'Knowledge of OOPs concepts and REST APIs',
+      'Eagerness to learn and build real-world products'
+    ],
+    skills: ['Flutter', 'Dart', 'Git', 'REST API'],
+    benefits: ['Mentorship from tech leads', 'Job offer upon successful internship completion', 'Certificate'],
+    status: 'Published'
   }
 ];
 
 const caseStudies = [
+  {
+    title: 'Scalable Healthcare & Patient Consultation Portal',
+    slug: 'scalable-healthcare-patient-portal',
+    client: 'Dhondge & Aniket Hospitals',
+    industry: 'Healthcare Technology',
+    summary: 'Building a zero-downtime medical portal with online OPD booking, electronic doctor availability telemetry, and emergency services.',
+    problem: 'Patients faced long wait times for appointments and difficult phone registration processes.',
+    solution: 'Engineered a modern React web application with Node.js REST API microservices, real-time doctor schedule syncing, and automated SMS alerts.',
+    challenges: [
+      'Ensuring data privacy and compliance for patient records.',
+      'Providing an intuitive user interface for users of all age groups.'
+    ],
+    keyFeatures: [
+      'Instant online OPD appointment booking',
+      'Real-time doctor telemetry & department schedules',
+      'Mobile-optimized emergency response button'
+    ],
+    developmentProcess: [
+      '01 Discovery & Hospital Workflow Audit',
+      '02 Wireframing & Accessible UI Design',
+      '03 React & Node.js Development',
+      '04 Security Audit & HIPAA Data Privacy Checks',
+      '05 Production Launch & Staff Training'
+    ],
+    outcome: 'Reduced patient wait times by 70%, increased digital appointment bookings by 300%, and achieved 5/5 star ratings from hospital management.',
+    techStack: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS', 'AWS'],
+    bannerImage: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&auto=format&fit=crop&q=80',
+    isFeatured: true
+  },
   {
     title: 'Scalable FinTech Mobile Banking Portal',
     slug: 'fintech-mobile-banking-portal',
@@ -323,16 +414,53 @@ By adhering to these principles, DSofts ensures client systems handle peak traff
     tags: ['Node.js', 'Express', 'Backend', 'API'],
     readTime: '6 min read',
     status: 'Published'
+  },
+  {
+    title: 'Building Modern Healthcare & Telemedicine Apps: Security & Compliance',
+    slug: 'building-modern-healthcare-telemedicine-apps',
+    featuredImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80',
+    excerpt: 'A comprehensive technical guide to building HIPAA-compliant electronic health records and real-time doctor consultation suites.',
+    content: `Healthcare digital transformation requires strict security protocols, low-latency video streaming, and accessible UI design.
+
+### Key Technical Pillars:
+1. **Encrypted EHR Storage**: Patient records must be encrypted at rest and in transit (AES-256 / TLS 1.3).
+2. **WebRTC Video Consultations**: Peer-to-peer WebRTC streams for seamless doctor-patient consultations.
+3. **Role-Based Access Control**: Granular permissions ensuring only authorized medical staff view patient charts.
+
+DSofts IT Services specializes in engineering bespoke healthcare software tailored for hospitals and clinics.`,
+    author: 'DSofts HealthTech Team',
+    category: 'Healthcare Tech',
+    tags: ['Healthcare', 'Telemedicine', 'React', 'Security'],
+    readTime: '5 min read',
+    status: 'Published'
   }
 ];
 
 const testimonials = [
   {
+    clientName: 'Dr. Meena Dhondge',
+    role: 'Medical Director',
+    company: 'Dhondge Hospital',
+    avatarUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&auto=format&fit=crop&q=80',
+    content: 'DSofts IT Services designed a clean, highly functional hospital website that simplified patient scheduling and elevated our digital presence tremendously.',
+    rating: 5,
+    isFeatured: true
+  },
+  {
+    clientName: 'Shubham Bande',
+    role: 'Administrator',
+    company: 'Aniket Hospital',
+    avatarUrl: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=200&auto=format&fit=crop&q=80',
+    content: 'The DSofts team engineered a seamless OPD booking and patient telemetry portal. Excellent communication, speed, and technical quality.',
+    rating: 5,
+    isFeatured: true
+  },
+  {
     clientName: 'Alex Turner',
     role: 'CTO',
     company: 'FinTech Innovations',
     avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
-    content: 'DSofts transformed our mobile banking concept into a flawless live application in record time. Their technical craftsmanship, transparent communication, and dedication to performance were outstanding.',
+    content: 'DSofts transformed our mobile banking concept into a flawless live application in record time. Their technical craftsmanship and dedication to performance were outstanding.',
     rating: 5,
     isFeatured: true
   },

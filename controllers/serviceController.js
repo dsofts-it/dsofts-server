@@ -27,13 +27,16 @@ export const createService = async (req, res) => {
       });
     }
 
-    const service = await Service.create({
+    const serviceData = {
       title,
       description,
       startingPrice,
       features: features || [],
-      isPopular: isPopular || false
-    });
+      isPopular: isPopular || false,
+      key: req.body.key || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+    };
+
+    const service = await Service.create(serviceData);
 
     res.status(201).json(service);
   } catch (error) {

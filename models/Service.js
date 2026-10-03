@@ -18,6 +18,10 @@ const serviceSchema = new mongoose.Schema({
     type: [String],
     default: []
   },
+  key: {
+    type: String,
+    trim: true
+  },
   isPopular: {
     type: Boolean,
     default: false
