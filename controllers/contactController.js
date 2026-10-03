@@ -9,7 +9,8 @@ const sendEmailNotification = async (inquiryData) => {
   const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
   const smtpPort = process.env.SMTP_PORT || 587;
   const smtpUser = process.env.SMTP_USER || process.env.EMAIL_USER;
-  const smtpPass = process.env.SMTP_PASS || process.env.EMAIL_PASS;
+  const rawPass = process.env.SMTP_PASS || process.env.EMAIL_PASS;
+  const smtpPass = rawPass ? rawPass.replace(/\s+/g, '') : '';
 
   if (smtpUser && smtpPass) {
     try {
