@@ -37,10 +37,10 @@ const sendEmailNotification = async (inquiryData) => {
               <table style="width: 100%; border-collapse: collapse;">
                 <tr><td style="padding: 8px 0; font-weight: bold; width: 140px;">Client Name:</td><td>${name}</td></tr>
                 <tr><td style="padding: 8px 0; font-weight: bold;">Client Email:</td><td><a href="mailto:${email}">${email}</a></td></tr>
-                <tr><td style="padding: 8px 0; font-weight: bold;">Phone Number:</td><td>${phone || 'N/A'}</td></tr>
-                <tr><td style="padding: 8px 0; font-weight: bold;">Company:</td><td>${company || 'N/A'}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold;">Phone Number:</td><td>${phone || 'NA'}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold;">Company:</td><td>${company && company.trim() ? company : 'NA'}</td></tr>
                 <tr><td style="padding: 8px 0; font-weight: bold;">Service Required:</td><td><strong style="color: #0284c7;">${service || 'General Inquiry'}</strong></td></tr>
-                <tr><td style="padding: 8px 0; font-weight: bold;">Budget (₹):</td><td><strong style="color: #16a34a;">${budget || 'Not specified'}</strong></td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold;">Project Budget:</td><td><strong style="color: #16a34a;">${budget && budget.trim() ? budget : 'NA / Flexible'}</strong></td></tr>
                 <tr><td style="padding: 8px 0; font-weight: bold;">Timeline:</td><td>${timeline || 'Not specified'}</td></tr>
               </table>
               <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 20px 0;" />
