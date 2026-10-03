@@ -14,15 +14,24 @@ const sendEmailNotification = async (inquiryData) => {
 
   if (smtpUser && smtpPass) {
     try {
-      const transporter = nodemailer.createTransport({
-        host: smtpHost,
-        port: Number(smtpPort),
-        secure: Number(smtpPort) === 465,
-        auth: {
-          user: smtpUser,
-          pass: smtpPass
-        }
-      });
+      const isGmail = smtpHost.includes('gmail') || smtpUser.includes('gmail');
+      const transporter = isGmail
+        ? nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: smtpUser,
+              pass: smtpPass
+            }
+          })
+        : nodemailer.createTransport({
+            host: smtpHost,
+            port: Number(smtpPort),
+            secure: Number(smtpPort) === 465,
+            auth: {
+              user: smtpUser,
+              pass: smtpPass
+            }
+          });
 
       const mailOptions = {
         from: `"DSofts IT Services Website" <${smtpUser}>`,
