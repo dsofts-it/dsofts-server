@@ -15,19 +15,19 @@ const companySettingSchema = new mongoose.Schema({
   },
   primaryEmail: {
     type: String,
-    default: 'contact@dsofts.in'
+    default: 'dsofts.itservices@gmail.com'
   },
   supportEmail: {
     type: String,
-    default: 'support@dsofts.in'
+    default: 'dsofts.itservices@gmail.com'
   },
   careersEmail: {
     type: String,
-    default: 'careers@dsofts.in'
+    default: 'dsofts.itservices@gmail.com'
   },
   phone: {
     type: String,
-    default: '+91 98765 43210'
+    default: ''
   },
   address: {
     type: String,
@@ -46,10 +46,10 @@ const companySettingSchema = new mongoose.Schema({
     default: 'To become a trusted global product development partner known for technical excellence.'
   },
   socialLinks: {
-    linkedin: { type: String, default: 'https://linkedin.com/company/dsofts' },
-    github: { type: String, default: 'https://github.com/dsofts' },
-    twitter: { type: String, default: 'https://twitter.com/dsofts_in' },
-    instagram: { type: String, default: 'https://instagram.com/dsofts_in' }
+    linkedin: { type: String, default: 'https://www.linkedin.com/company/dsofts-it-services' },
+    facebook: { type: String, default: 'https://facebook.com/dsoftsitservices' },
+    twitter: { type: String, default: 'https://x.com/dsoftsOfficial' },
+    instagram: { type: String, default: 'https://instagram.com/dsofts.in' }
   },
   stats: {
     projectsDelivered: { type: Number, default: 50 },
