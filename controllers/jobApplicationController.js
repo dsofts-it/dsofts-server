@@ -1,4 +1,7 @@
+import fs from 'fs';
 import nodemailer from 'nodemailer';
+import Job from '../models/Job.js';
+import JobApplication from '../models/JobApplication.js';
 
 // Helper to send email notification for job applications to dsofts.itservices@gmail.com
 const sendJobApplicationEmail = async (applicantData, job, file) => {
@@ -112,8 +115,8 @@ export const submitApplication = async (req, res, next) => {
       noticePeriod: finalNoticePeriod,
       skills: Array.isArray(skills) ? skills : (skills ? skills.split(',').map(s => s.trim()).filter(Boolean) : []),
       linkedinUrl: linkedinUrl || '',
-      githubUrl: githubUrl || '',
-      portfolioUrl: portfolioUrl || '',
+      githubUrl: githubUrl || portfolioUrl || '',
+      portfolioUrl: portfolioUrl || githubUrl || '',
       coverLetter: coverLetter || '',
       resumePath: req.file.path,
       originalFileName: req.file.originalname,
