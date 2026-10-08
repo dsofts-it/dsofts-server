@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 import nodemailer from 'nodemailer';
 import Job from '../models/Job.js';
 import JobApplication from '../models/JobApplication.js';
@@ -191,14 +192,26 @@ export const downloadResumeAdmin = async (req, res, next) => {
   try {
     const application = await JobApplication.findById(req.params.id);
     if (!application || !application.resumePath) {
-      return res.status(404).json({ message: 'Resume file not found' });
+      return res.status(404).json({ message: 'Resume record not found for this candidate.' });
     }
 
-    if (!fs.existsSync(application.resumePath)) {
-      return res.status(404).json({ message: 'File missing from server storage' });
+    const filename = path.basename(application.resumePath);
+    const candidates = [
+      application.resumePath,
+      path.resolve(process.cwd(), application.resumePath),
+      path.resolve(process.cwd(), 'uploads', 'resumes', filename),
+      path.resolve(process.cwd(), 'dsofts-server', 'uploads', 'resumes', filename),
+      path.resolve('uploads', 'resumes', filename)
+    ];
+
+    const foundPath = candidates.find(p => p && typeof p === 'string' && fs.existsSync(p));
+
+    if (!foundPath) {
+      return res.status(404).json({ message: 'Resume file missing from server storage.' });
     }
 
-    res.download(application.resumePath, application.originalFileName || 'Resume.pdf');
+    const downloadFileName = application.originalFileName || filename || 'Resume.pdf';
+    res.download(foundPath, downloadFileName);
   } catch (error) {
     next(error);
   }
